@@ -19,7 +19,7 @@
 #include <device.h>
 #include <drivers/gpio.h>
 #include <string.h>
-
+#include "button/button.h"
 #include <console/console.h>
 
 static const char prompt[] = "Character echo started ...\r\n";
@@ -27,6 +27,7 @@ static const char prompt[] = "Character echo started ...\r\n";
 
 void main(void)
 {    
+    button_config();    
     uint8_t c;
 
     /* Welcome message */

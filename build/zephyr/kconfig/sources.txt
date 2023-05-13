@@ -1,6 +1,3 @@
-/home/rt/Desktop/NCS_DemoCodes/basic_06_ConsoleDemo/build/Kconfig/Kconfig.modules
-/home/rt/Desktop/NCS_DemoCodes/basic_06_ConsoleDemo/build/Kconfig/Kconfig.shield
-/home/rt/Desktop/NCS_DemoCodes/basic_06_ConsoleDemo/build/Kconfig/Kconfig.shield.defconfig
 /home/rt/ncs/modules/debug/TraceRecorder/config/Kconfig
 /home/rt/ncs/modules/debug/TraceRecorder/kernelports/Zephyr/Kconfig
 /home/rt/ncs/modules/debug/TraceRecorder/streamports/ARM_ITM/Kconfig
@@ -1793,4 +1790,7 @@
 /home/rt/ncs/zephyr/subsys/usb/device/class/dfu/Kconfig
 /home/rt/ncs/zephyr/subsys/usb/device/class/hid/Kconfig
 /home/rt/ncs/zephyr/subsys/usb/device/class/netusb/Kconfig
+/home/rt/setr/trab3/SETR_09_10/build/Kconfig/Kconfig.modules
+/home/rt/setr/trab3/SETR_09_10/build/Kconfig/Kconfig.shield
+/home/rt/setr/trab3/SETR_09_10/build/Kconfig/Kconfig.shield.defconfig
 /home/rt/zephyr-sdk-0.14.1/cmake/zephyr/Kconfig

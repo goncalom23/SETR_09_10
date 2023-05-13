@@ -39,6 +39,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/rt/Desktop/NCS_DemoCodes/basic_06_ConsoleDemo/build/zephyr/lib/libc/minimal/cmake_install.cmake")
+  include("/home/rt/setr/trab3/SETR_09_10/build/zephyr/lib/libc/minimal/cmake_install.cmake")
 endif()
 

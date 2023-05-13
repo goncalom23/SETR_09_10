@@ -39,21 +39,21 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/rt/Desktop/NCS_DemoCodes/basic_06_ConsoleDemo/build/modules/nrf/drivers/hw_cc310/cmake_install.cmake")
+  include("/home/rt/setr/trab3/SETR_09_10/build/modules/nrf/drivers/hw_cc310/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/rt/Desktop/NCS_DemoCodes/basic_06_ConsoleDemo/build/modules/nrf/drivers/entropy/cmake_install.cmake")
+  include("/home/rt/setr/trab3/SETR_09_10/build/modules/nrf/drivers/entropy/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/rt/Desktop/NCS_DemoCodes/basic_06_ConsoleDemo/build/modules/nrf/drivers/flash/cmake_install.cmake")
+  include("/home/rt/setr/trab3/SETR_09_10/build/modules/nrf/drivers/flash/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/rt/Desktop/NCS_DemoCodes/basic_06_ConsoleDemo/build/modules/nrf/drivers/serial/cmake_install.cmake")
+  include("/home/rt/setr/trab3/SETR_09_10/build/modules/nrf/drivers/serial/cmake_install.cmake")
 endif()
 

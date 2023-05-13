@@ -39,26 +39,26 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/rt/Desktop/NCS_DemoCodes/basic_06_ConsoleDemo/build/modules/nrf/subsys/net/cmake_install.cmake")
+  include("/home/rt/setr/trab3/SETR_09_10/build/modules/nrf/subsys/net/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/rt/Desktop/NCS_DemoCodes/basic_06_ConsoleDemo/build/modules/nrf/subsys/dfu/cmake_install.cmake")
+  include("/home/rt/setr/trab3/SETR_09_10/build/modules/nrf/subsys/dfu/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/rt/Desktop/NCS_DemoCodes/basic_06_ConsoleDemo/build/modules/nrf/subsys/shell/cmake_install.cmake")
+  include("/home/rt/setr/trab3/SETR_09_10/build/modules/nrf/subsys/shell/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/rt/Desktop/NCS_DemoCodes/basic_06_ConsoleDemo/build/modules/nrf/subsys/debug/cmake_install.cmake")
+  include("/home/rt/setr/trab3/SETR_09_10/build/modules/nrf/subsys/debug/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/rt/Desktop/NCS_DemoCodes/basic_06_ConsoleDemo/build/modules/nrf/subsys/partition_manager/cmake_install.cmake")
+  include("/home/rt/setr/trab3/SETR_09_10/build/modules/nrf/subsys/partition_manager/cmake_install.cmake")
 endif()
 
