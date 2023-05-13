@@ -21,13 +21,14 @@ void button_pressed(const struct device *dev, struct gpio_callback *cb, uint32_t
 	/* Identify the button(s) that was(ere) hit*/
 	for(i=0; i<sizeof(buttons_pins); i++)
 	{		
-
-		button_state[i] = BIT(buttons_pins[i]) & pins;
-		/*if(BIT(buttons_pins[i]) & pins) 
+		//button_state[i] = BIT(buttons_pins[i]) & pins;
+		if(BIT(buttons_pins[i]) & pins) 
 		{
-			printk("Button %d pressed\n\r",i+1);
-			uint8_t button_state[8] = 1;
-		}*/
+			button_state[i] = 1;
+		}
+		else{
+			button_state[i] = 0;
+		}
 	} 
 }
 

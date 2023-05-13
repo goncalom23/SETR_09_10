@@ -22,17 +22,24 @@ void main(void)
         int state = IDLE;        
         while (1) 
         {
+                
                 k_msleep(100);
-                printk("%i\n",button_state[0]);      
-                printk("%i\n",button_state[1]);       
-                printk("%i\n",button_state[2]);       
-                printk("%i\n",button_state[3]);       
+                printf("\033[2J\033[H");                // clear window code
+                printk("button1: %i\n",button_state[0]);      
+                printk("button2: %i\n",button_state[1]);       
+                printk("button3: %i\n",button_state[2]);       
+                printk("button4: %i\n",button_state[3]);
+                printk("button5: %i\n",button_state[4]);      
+                printk("button6: %i\n",button_state[5]);       
+                printk("button7: %i\n",button_state[6]);       
+                printk("button8: %i\n",button_state[7]);       
+                 
 
                 switch(state)
                 {
                         case IDLE:
                         {
-                                printk("%i",button_state[0]);       
+                                //printk("%i",button_state[0]);       
                                 break;
                         }
 
