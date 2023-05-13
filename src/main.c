@@ -16,58 +16,29 @@
 extern uint8_t button_state[8];
 int credit;
 int select_movie;
-char* arrow_1 = "";
-char* arrow_2 = "";
-char* arrow_3 = "";
-char* arrow_4 = "";
-char* arrow_5 = "";
+char arrow [5][10];
 
-
-void menu_movies(int select){
-        if(select == 1){
-			arrow_1 = "->";
-			arrow_2 = "";
-			arrow_3 = "";
-			arrow_4 = "";
-			arrow_5 = "";
+void menu_movies(int select)
+{
+        for(int i = 0; i<5; i++)
+        {
+                if(i == select)
+                {
+                        strcpy(arrow[i],"->");
+                }
+                else
+                {
+                        strcpy(arrow[i],"");
+                }
         }
-		else if(select == 2){
-			arrow_1 = "";
-			arrow_2 = "->";
-			arrow_3 = "";
-			arrow_4 = "";
-			arrow_5 = "";
-        }
-		else if(select == 3){
-			arrow_1 = "";
-			arrow_2 = "";
-			arrow_3 = "->";
-			arrow_4 = "";
-			arrow_5 = "";
-        }
-		else if(select == 4){
-			arrow_1 = "";
-			arrow_2 = "";
-			arrow_3 = "";
-			arrow_4 = "->";
-			arrow_5 = "";
-        }
-		else if(select == 5){
-			arrow_1 = "";
-			arrow_2 = "";
-			arrow_3 = "";
-			arrow_4 = "";
-			arrow_5 = "->";
-        }
-
     printf("\033[2J\033[H");                                // clear window code
     printf("\n CREDIT= %i",credit); 
     printf("\n"); 
-    printf("\n%s Movie A, 19H00 session, 9 EUR",arrow_1); 
-    printf("\n%s Movie A, 21H00 session, 11 EUR",arrow_2); 
-    printf("\n%s Movie A, 23H00 session, 9 EUR",arrow_3);
-    printf("\n%s Movie B, 19H00 session, 10 EUR",arrow_4);
-    printf("\n%s Movie B, 21H00 session, 12 EUR",arrow_5);
+    printf("\n%s Movie A, 19H00 session, 9 EUR",arrow[0]); 
+    printf("\n%s Movie A, 21H00 session, 11 EUR",arrow[1]); 
+    printf("\n%s Movie A, 23H00 session, 9 EUR",arrow[2]);
+    printf("\n%s Movie B, 19H00 session, 10 EUR",arrow[3]);
+    printf("\n%s Movie B, 21H00 session, 12 EUR",arrow[4]);
 }
 
 void main(void)
@@ -75,7 +46,7 @@ void main(void)
         button_config();
 
         credit = 0;
-		select_movie = 3;
+	select_movie = 0;
 
         int state = BROWSING_MOVIES;        
         while (1)
