@@ -1,52 +1,62 @@
-/*
- * Paulo Pedreiras, 2022/10
- * 
- * Inits the console services and echoes any typed char
- * Returns are converted in Return + Newline 
- * 
- * Adapted from: ncs/zephyr/samples/subsys/console/echo
- *
- * Set prj.conf to:
- *   CONFIG_RTT_CONSOLE=n
- *   CONFIG_UART_CONSOLE=y
- *   CONFIG_CONSOLE_SUBSYS=y
- *   CONFIG_CONSOLE_GETCHAR=y
- *   CONFIG_CONSOLE_GETCHAR_BUFSIZE=64
- *   CONFIG_CONSOLE_PUTCHAR_BUFSIZE=512
- */
-
 #include <zephyr.h>
 #include <device.h>
 #include <drivers/gpio.h>
 #include <string.h>
-#include "button/button.h"
 #include <console/console.h>
+#include <stdio.h>
+#include <stdint.h>
 
-static const char prompt[] = "Character echo started ...\r\n";
+#include "button/button.h"
 
+#define IDLE 0
+#define BROWSING_MOVIES 1
+#define CREDIT_ADDED 2
+#define MOVIE_SELECTED 3
+
+extern uint8_t button_state[8];
 
 void main(void)
-{    
-    button_config();    
-    uint8_t c;
+{   
+        button_config();
 
-    /* Welcome message */
-    printk("\n\r Console test. Characters typed by the user are echoed.  \n\r");
+        int state = IDLE;        
+        while (1) 
+        {
+                k_msleep(100);
+                printk("%i\n",button_state[0]);      
+                printk("%i\n",button_state[1]);       
+                printk("%i\n",button_state[2]);       
+                printk("%i\n",button_state[3]);       
 
-    /* Init console service */
-    console_init();
-    
-    /* Output a string*/ 
-    console_write(NULL, prompt, sizeof(prompt) - 1);
+                switch(state)
+                {
+                        case IDLE:
+                        {
+                                printk("%i",button_state[0]);       
+                                break;
+                        }
 
-    /* Wait for chars and echoes them. Newline is added after return */ 
-    while (1) {
-             c = console_getchar();
+                        case BROWSING_MOVIES:
+                        {
 
-            console_putchar(c);
-            if (c == '\r') {
-                    console_putchar('\n');
-            }
-    }
+                                break;
+                        }
+                        
+                        case CREDIT_ADDED:
+                        {
+
+                                break;
+                        }
+
+                        case MOVIE_SELECTED:
+                        {
+
+                                break;
+                        }
+
+                        default:                /** Error */
+                        break;
+                }
+        }   
  
 }

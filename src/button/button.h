@@ -14,7 +14,7 @@
 
 #define GPIO0_NODE DT_NODELABEL(gpio0)
 
-
+extern uint8_t button_state[8];
 void button_pressed(const struct device *dev, struct gpio_callback *cb, uint32_t pins);
 
 void button_config();

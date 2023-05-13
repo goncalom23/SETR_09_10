@@ -8,6 +8,8 @@
 const uint8_t buttons_pins[] = {11,12,24,25,3,4,28,29}; /* vector with pins where buttons are connected */
 static const struct device * gpio0_dev = DEVICE_DT_GET(GPIO0_NODE);
 static struct gpio_callback button_cb_data;
+uint8_t button_state[8];
+
 
 void button_pressed(const struct device *dev, struct gpio_callback *cb, uint32_t pins)
 {
@@ -17,14 +19,20 @@ void button_pressed(const struct device *dev, struct gpio_callback *cb, uint32_t
 	gpio_pin_toggle(gpio0_dev,LED1_PIN);
 
 	/* Identify the button(s) that was(ere) hit*/
-	for(i=0; i<sizeof(buttons_pins); i++){		
-		if(BIT(buttons_pins[i]) & pins) {
+	for(i=0; i<sizeof(buttons_pins); i++)
+	{		
+
+		button_state[i] = BIT(buttons_pins[i]) & pins;
+		/*if(BIT(buttons_pins[i]) & pins) 
+		{
 			printk("Button %d pressed\n\r",i+1);
-		}
+			uint8_t button_state[8] = 1;
+		}*/
 	} 
 }
 
-void button_config(){
+void button_config()
+{
     
     int ret, i;
 	uint32_t pinmask = 0; /* Mask for setting the pins that shall generate interrupts */
