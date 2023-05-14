@@ -64,7 +64,7 @@ void main(void)
         {
                 k_msleep(10);
                 timer_counter++;
-                if(timer_counter == 10 && state == BROWSING_MOVIES)
+                if(timer_counter == 50 && state == BROWSING_MOVIES)
                 {
                         print_interface();
                         timer_counter = 0;
@@ -137,7 +137,7 @@ void main(void)
                                 credit = 0;   
                                 printf("\033[2J\033[H");                                // clear window code
                                 printf("\n %i EUR return",credit);
-                                k_msleep(1000);
+                                k_msleep(3000);
                                 button_state[7] = 0;      
                                 }
 
@@ -148,7 +148,7 @@ void main(void)
                         case MOVIE_SELECTED:
                         {
                                 printf("\033[2J\033[H");                                // clear window code
-                                printf("\n Ticket for movie %c, session %uH00 issued",movie_name,movie_session);
+                                printf("\n Ticket for movie %c, session %uH00 issued",movie_name[select_movie],movie_session[select_movie]);
 
                                 if(movie_price[select_movie] > credit)
                                 {
@@ -159,7 +159,7 @@ void main(void)
                                         printf("\n Remaining credit %i",credit);                
                                 }
 
-                                k_msleep(1000);
+                                k_msleep(3000);
                                 state = BROWSING_MOVIES;
                                 break;
                         }
