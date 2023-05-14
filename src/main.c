@@ -77,12 +77,14 @@ void main(void)
                                 if(button_state[4] == 1)                // Browse Up
                                 {
                                 select_movie = select_movie - 1; 
-                                change_arrow();               
+                                change_arrow(); 
+                                button_state[4] = 0;                    
                                 }
                                 else if(button_state[5] == 1)           // Browse Down
                                 {
                                 select_movie = select_movie + 1;
-                                change_arrow();                               
+                                change_arrow();     
+                                button_state[5] = 0;                    
                                 }
 
                                 if(select_movie < 0)                    // Rotacao entre o ultimo e primeiro filme
@@ -103,6 +105,7 @@ void main(void)
                                 if(button_state[6] == 1)                // Select
                                 {
                                         state = MOVIE_SELECTED;
+                                        button_state[6] = 0;                    
                                 }
                                 break;
                         }
