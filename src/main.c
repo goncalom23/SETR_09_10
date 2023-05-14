@@ -17,8 +17,8 @@ uint8_t movie_price[5] = {9,11,9,10,12};
 uint8_t movie_session[5] = {19,21,23,19,21};
 
 extern uint8_t button_state[8];
-int credit;
-int select_movie;
+int credit = 0;
+int select_movie = 0;
 uint32_t timer_counter = 0;
 char arrow [5][10];
 
@@ -51,13 +51,23 @@ void print_interface()
     printf("\n%s Movie B, 21H00 session, 12 EUR",arrow[4]);
 }
 
+void print_button_state(){
+    printf("\033[2J\033[H");   
+	printf("\nButton 1: %i", button_state[0]);
+	printf("\nButton 2: %i", button_state[1]);
+	printf("\nButton 3: %i", button_state[2]);
+	printf("\nButton 4: %i", button_state[3]);
+	printf("\nButton 5: %i", button_state[4]);
+	printf("\nButton 6: %i", button_state[5]);
+	printf("\nButton 7: %i", button_state[6]);
+	printf("\nButton 8: %i", button_state[7]);
+}
+
 
 void main(void)
 {   
         button_config();
-
-        credit = 0;
-	select_movie = 0;
+		change_arrow();
 
         int state = BROWSING_MOVIES;        
         while (1)
@@ -67,6 +77,7 @@ void main(void)
                 if(timer_counter == 50 && state == BROWSING_MOVIES)
                 {
                         print_interface();
+						//print_button_state();
                         timer_counter = 0;
                 }
 
@@ -90,13 +101,15 @@ void main(void)
                                 if(select_movie < 0)                    // Rotacao entre o ultimo e primeiro filme
                                 {
                                         select_movie = 4;
+                                        change_arrow();
                                 }
                                 if(select_movie > 4)
                                 {
                                         select_movie = 0;
+                                        change_arrow();
                                 }
 
-                                if(button_state[0] == 1 || button_state[1] == 1 || button_state[2] == 1 || button_state[3] == 1)
+                                if(button_state[0] == 1 || button_state[1] == 1 || button_state[2] == 1 || button_state[3] == 1 || button_state[7] == 1)
                                 {
                                         state = ADD_CREDIT;
                                 } 
@@ -156,6 +169,7 @@ void main(void)
                                 }
                                 else if(movie_price[select_movie] < credit)
                                 {
+                                        credit = credit-movie_price[select_movie];
                                         printf("\n Remaining credit %i",credit);                
                                 }
 
@@ -164,7 +178,7 @@ void main(void)
                                 break;
                         }
 
-                        default:                                        /** Error */
+                        default:                                        //Error 
                         break;
                 }
         }   
