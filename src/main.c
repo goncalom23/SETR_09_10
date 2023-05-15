@@ -44,62 +44,9 @@ int select_movie = 0;                                       // Number of the mov
 uint32_t timer_counter = 0;                                 // Counter to track time, used to minimize prints
 char arrow [5][10];                                         // String array to display an arrow showing the user which movie he is pointing to chose
 
-/** \brief
- *  function to update the string array that contains one arrow pointing to the movie beeing selected by the user   
- *  \return                                                     
- *  0: if success                 	 
- */ 
-int change_arrow()
-{
-    for(int i = 0; i<5; i++)
-    {
-        if(i == select_movie)
-        {
-                strcpy(arrow[i],"->");
-        }
-        else
-        {
-                strcpy(arrow[i],"");
-        }
-    }    
-    return EXIT_SUCESSFUL; 
-}
-
-/** \brief
- *  print interface shown by default while user is browsing movies or adding credit                      	 
- *  \return                                                     
- *  0: if success                 	 
- */ 
-int print_interface()
-{
-    printf("\033[2J\033[H");                                // clear window code
-    printf("\n CREDIT= %i",credit); 
-    printf("\n"); 
-    printf("\n%s Movie A, 19H00 session, 9 EUR",arrow[0]); 
-    printf("\n%s Movie A, 21H00 session, 11 EUR",arrow[1]); 
-    printf("\n%s Movie A, 23H00 session, 9 EUR",arrow[2]);
-    printf("\n%s Movie B, 19H00 session, 10 EUR",arrow[3]);
-    printf("\n%s Movie B, 21H00 session, 12 EUR",arrow[4]);
-    return EXIT_SUCESSFUL; 
-}
-
-/** \brief
- *  print interface to check if button states are changing correctly                          	 
- *  \return                                                     
- *  0: if success                 	 
- */ 
-int print_button_state(){
-    printf("\033[2J\033[H");   
-	printf("\nButton 1: %i", button_state[0]);
-	printf("\nButton 2: %i", button_state[1]);
-	printf("\nButton 3: %i", button_state[2]);
-	printf("\nButton 4: %i", button_state[3]);
-	printf("\nButton 5: %i", button_state[4]);
-	printf("\nButton 6: %i", button_state[5]);
-	printf("\nButton 7: %i", button_state[6]);
-	printf("\nButton 8: %i", button_state[7]);
-    return EXIT_SUCESSFUL; 
-}
+int change_arrow();
+int print_interface();
+int print_button_state();
 
 /** \brief
  *  main function with a state machine that emulates an automated ticket vending machine for movies                        	 
@@ -239,4 +186,61 @@ int main(void)
         }
     }
     return EXIT_SUCESSFUL;    
+}
+
+/** \brief
+ *  function to update the string array that contains one arrow pointing to the movie beeing selected by the user   
+ *  \return                                                     
+ *  0: if success                 	 
+ */ 
+int change_arrow()
+{
+    for(int i = 0; i<5; i++)
+    {
+        if(i == select_movie)
+        {
+                strcpy(arrow[i],"->");
+        }
+        else
+        {
+                strcpy(arrow[i],"");
+        }
+    }    
+    return EXIT_SUCESSFUL; 
+}
+
+/** \brief
+ *  print interface shown by default while user is browsing movies or adding credit                      	 
+ *  \return                                                     
+ *  0: if success                 	 
+ */ 
+int print_interface()
+{
+    printf("\033[2J\033[H");                                // clear window code
+    printf("\n CREDIT= %i",credit); 
+    printf("\n"); 
+    printf("\n%s Movie A, 19H00 session, 9 EUR",arrow[0]); 
+    printf("\n%s Movie A, 21H00 session, 11 EUR",arrow[1]); 
+    printf("\n%s Movie A, 23H00 session, 9 EUR",arrow[2]);
+    printf("\n%s Movie B, 19H00 session, 10 EUR",arrow[3]);
+    printf("\n%s Movie B, 21H00 session, 12 EUR",arrow[4]);
+    return EXIT_SUCESSFUL; 
+}
+
+/** \brief
+ *  print interface to check if button states are changing correctly                          	 
+ *  \return                                                     
+ *  0: if success                 	 
+ */ 
+int print_button_state(){
+    printf("\033[2J\033[H");   
+	printf("\nButton 1: %i", button_state[0]);
+	printf("\nButton 2: %i", button_state[1]);
+	printf("\nButton 3: %i", button_state[2]);
+	printf("\nButton 4: %i", button_state[3]);
+	printf("\nButton 5: %i", button_state[4]);
+	printf("\nButton 6: %i", button_state[5]);
+	printf("\nButton 7: %i", button_state[6]);
+	printf("\nButton 8: %i", button_state[7]);
+    return EXIT_SUCESSFUL; 
 }

@@ -43,21 +43,21 @@
  * 	Modular and doxygen implementaiton;
  */
 
-#include <zephyr/kernel.h>          /* for k_msleep() */
+#include <zephyr/kernel.h>          /* for k_msleep()                             */
 #include <zephyr/device.h>          /* for device_is_ready() and device structure */
-#include <zephyr/devicetree.h>		/* for DT_NODELABEL() */
-#include <zephyr/drivers/gpio.h>    /* for GPIO api*/
-#include <zephyr/sys/printk.h>      /* for printk()*/
+#include <zephyr/devicetree.h>		/* for DT_NODELABEL()                         */
+#include <zephyr/drivers/gpio.h>    /* for GPIO api                               */
+#include <zephyr/sys/printk.h>      /* for printk()                               */
 #include "button.h"
 
 const uint8_t buttons_pins[] = {11,12,24,25,3,4,28,29};             /* vector with pins where buttons are connected */
-static const struct device * gpio0_dev = DEVICE_DT_GET(GPIO0_NODE); /* Now get the device pointer for GPIO0 */
+static const struct device * gpio0_dev = DEVICE_DT_GET(GPIO0_NODE); /* Now get the device pointer for GPIO0         */
 
 /* Define a variable of type static struct gpio_callback, which will latter be used to install the callback
 *  It defines e.g. which pin triggers the callback and the address of the function */
 static struct gpio_callback button_cb_data;
 
-uint8_t button_state[8];                                            /* array to track all buttons state */
+uint8_t button_state[8];                                            /* array to track all buttons state             */
 
 /** \brief
  * Define a callback function. It is like an ISR (and runs in the cotext of an ISR) 
@@ -83,15 +83,16 @@ void button_pressed(const struct device *dev, struct gpio_callback *cb, uint32_t
 		else{
 			button_state[i] = 0;
 		}
-	} 
+	}   
 }
 
 /** \brief
  * functon that configures the GPIO pins as inputs and inicializes the interrupt routine                                             	 
+ *  \return                                                     
+ *  0: if success                 	 
  */ 
 void button_config()
 {
-    
     int ret, i;
 	uint32_t pinmask = 0;                                           /* Mask for setting the pins that shall generate interrupts */
 	
