@@ -111,7 +111,9 @@ $(document).ready(function(){initNavTree('button_8c.html',''); initResizable(); 
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="button_8c__incl.png" border="0" usemap="#asrc_2button_2button_8c" alt=""/></div>
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="button_8c_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ab4b2c1747e66383dfb0b5679887e1854"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="button_8c.html#ab4b2c1747e66383dfb0b5679887e1854">button_pressed</a> (const struct device *dev, struct gpio_callback *cb, uint32_t pins)</td></tr>
@@ -124,11 +126,9 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ae5db5c9eda2f8f7a3b905743c4a412c4"><td class="memItemLeft" align="right" valign="top"><a id="ae5db5c9eda2f8f7a3b905743c4a412c4" name="ae5db5c9eda2f8f7a3b905743c4a412c4"></a>
-const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>buttons_pins</b> [] = {11,12,24,25,3,4,28,29}</td></tr>
+<tr class="memitem:ae5db5c9eda2f8f7a3b905743c4a412c4"><td class="memItemLeft" align="right" valign="top">const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="button_8c.html#ae5db5c9eda2f8f7a3b905743c4a412c4">buttons_pins</a> [] = {11,12,24,25,3,4,28,29}</td></tr>
 <tr class="separator:ae5db5c9eda2f8f7a3b905743c4a412c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8fdae708b90715d11ef68ade4d479b01"><td class="memItemLeft" align="right" valign="top"><a id="a8fdae708b90715d11ef68ade4d479b01" name="a8fdae708b90715d11ef68ade4d479b01"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>button_state</b> [8]</td></tr>
+<tr class="memitem:a8fdae708b90715d11ef68ade4d479b01"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="button_8c.html#a8fdae708b90715d11ef68ade4d479b01">button_state</a> [8]</td></tr>
 <tr class="separator:a8fdae708b90715d11ef68ade4d479b01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -159,6 +159,8 @@ Notes:
     and also printk() output
 </pre> <hr  />
 <p>Gonçalo Martins and Filipe Silva: Added array to track button states. Modular and doxygen implementaiton; </p>
+
+<p class="definition">Definition in file <a class="el" href="button_8c_source.html">button.c</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="ab4b2c1747e66383dfb0b5679887e1854" name="ab4b2c1747e66383dfb0b5679887e1854"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab4b2c1747e66383dfb0b5679887e1854">&#9670;&#160;</a></span>button_pressed()</h2>
@@ -202,7 +204,27 @@ Notes:
   </table>
   </dd>
 </dl>
-<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+
+<p class="definition">Definition at line <a class="el" href="button_8c_source.html#l00068">68</a> of file <a class="el" href="button_8c_source.html">button.c</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   69</span>{</div>
+<div class="line"><span class="lineno">   70</span>    <span class="keywordtype">int</span> i=0;</div>
+<div class="line"><span class="lineno">   71</span> </div>
+<div class="line"><span class="lineno">   72</span>    gpio_pin_toggle(gpio0_dev,LED1_PIN);                            <span class="comment">/* Toggle led1 */</span></div>
+<div class="line"><span class="lineno">   73</span> </div>
+<div class="line"><span class="lineno">   74</span>    <span class="comment">/* Identify the button(s) that was(ere) hit*/</span></div>
+<div class="line"><span class="lineno">   75</span>    <span class="keywordflow">for</span>(i=0; i&lt;<span class="keyword">sizeof</span>(buttons_pins); i++)</div>
+<div class="line"><span class="lineno">   76</span>    {       </div>
+<div class="line"><span class="lineno">   77</span>        <span class="comment">//button_state[i] = BIT(buttons_pins[i]) &amp; pins;</span></div>
+<div class="line"><span class="lineno">   78</span>        <span class="keywordflow">if</span>(BIT(buttons_pins[i]) &amp; pins) </div>
+<div class="line"><span class="lineno">   79</span>        {</div>
+<div class="line"><span class="lineno">   80</span>            button_state[i] = 1;</div>
+<div class="line"><span class="lineno">   81</span>        }</div>
+<div class="line"><span class="lineno">   82</span>        <span class="keywordflow">else</span>{</div>
+<div class="line"><span class="lineno">   83</span>            button_state[i] = 0;</div>
+<div class="line"><span class="lineno">   84</span>        }</div>
+<div class="line"><span class="lineno">   85</span>    }   </div>
+<div class="line"><span class="lineno">   86</span>}</div>
+</div><!-- fragment --><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
@@ -232,7 +254,77 @@ Notes:
 <dl class="section return"><dt>Returns</dt><dd><br  />
  0: if success <br  />
  </dd></dl>
-<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+
+<p class="definition">Definition at line <a class="el" href="button_8c_source.html#l00093">93</a> of file <a class="el" href="button_8c_source.html">button.c</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   94</span>{</div>
+<div class="line"><span class="lineno">   95</span>    <span class="keywordtype">int</span> ret, i;</div>
+<div class="line"><span class="lineno">   96</span>    uint32_t pinmask = 0;                                           <span class="comment">/* Mask for setting the pins that shall generate interrupts */</span></div>
+<div class="line"><span class="lineno">   97</span>    </div>
+<div class="line"><span class="lineno">   98</span>    <span class="comment">/* Welcome message */</span></div>
+<div class="line"><span class="lineno">   99</span>    printk(<span class="stringliteral">&quot;Digital IO accessing IO pins not set via DT (external buttons in the case) \n\r&quot;</span>);</div>
+<div class="line"><span class="lineno">  100</span>    printk(<span class="stringliteral">&quot;Hit buttons 1-8 (1...4 internal, 5-8 external connected to A0...A3). Led toggles and button ID printed at console \n\r&quot;</span>);</div>
+<div class="line"><span class="lineno">  101</span> </div>
+<div class="line"><span class="lineno">  102</span>    <span class="comment">/* Check if gpio0 device is ready */</span></div>
+<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">if</span> (!device_is_ready(gpio0_dev)) </div>
+<div class="line"><span class="lineno">  104</span>    {</div>
+<div class="line"><span class="lineno">  105</span>        printk(<span class="stringliteral">&quot;Error: gpio0 device is not ready\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  106</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  107</span>    } </div>
+<div class="line"><span class="lineno">  108</span>    <span class="keywordflow">else</span> </div>
+<div class="line"><span class="lineno">  109</span>    {</div>
+<div class="line"><span class="lineno">  110</span>        printk(<span class="stringliteral">&quot;Success: gpio0 device is ready\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  111</span>    }</div>
+<div class="line"><span class="lineno">  112</span> </div>
+<div class="line"><span class="lineno">  113</span>    <span class="comment">/* Configure the GPIO pins - LED1 for output and buttons 1-4 + IOPINS 2,4,28 and 29 for input</span></div>
+<div class="line"><span class="lineno">  114</span><span class="comment">     * Use internal pull-up to avoid the need for an external resistor (buttons) */</span></div>
+<div class="line"><span class="lineno">  115</span>    ret = gpio_pin_configure(gpio0_dev,LED1_PIN, GPIO_OUTPUT_ACTIVE);</div>
+<div class="line"><span class="lineno">  116</span>    <span class="keywordflow">if</span> (ret &lt; 0) </div>
+<div class="line"><span class="lineno">  117</span>    {</div>
+<div class="line"><span class="lineno">  118</span>        printk(<span class="stringliteral">&quot;Error: gpio_pin_configure failed for led1, error:%d\n\r&quot;</span>, ret);</div>
+<div class="line"><span class="lineno">  119</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  120</span>    }</div>
+<div class="line"><span class="lineno">  121</span> </div>
+<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">for</span>(i=0; i&lt;<span class="keyword">sizeof</span>(buttons_pins); i++) </div>
+<div class="line"><span class="lineno">  123</span>    {</div>
+<div class="line"><span class="lineno">  124</span>        ret = gpio_pin_configure(gpio0_dev, buttons_pins[i], GPIO_INPUT | GPIO_PULL_UP);</div>
+<div class="line"><span class="lineno">  125</span>        <span class="keywordflow">if</span> (ret &lt; 0) </div>
+<div class="line"><span class="lineno">  126</span>        {</div>
+<div class="line"><span class="lineno">  127</span>            printk(<span class="stringliteral">&quot;Error: gpio_pin_configure failed for button %d/pin %d, error:%d\n\r&quot;</span>, i+1,buttons_pins[i], ret);</div>
+<div class="line"><span class="lineno">  128</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  129</span>        } </div>
+<div class="line"><span class="lineno">  130</span>        <span class="keywordflow">else</span> </div>
+<div class="line"><span class="lineno">  131</span>        {</div>
+<div class="line"><span class="lineno">  132</span>            printk(<span class="stringliteral">&quot;Success: gpio_pin_configure for button %d/pin %d\n\r&quot;</span>, i+1,buttons_pins[i]);</div>
+<div class="line"><span class="lineno">  133</span>        }</div>
+<div class="line"><span class="lineno">  134</span>    }</div>
+<div class="line"><span class="lineno">  135</span> </div>
+<div class="line"><span class="lineno">  136</span>    <span class="comment">/* Configure the interrupt on the button&#39;s pin */</span></div>
+<div class="line"><span class="lineno">  137</span>    <span class="keywordflow">for</span>(i=0; i&lt;<span class="keyword">sizeof</span>(buttons_pins); i++) </div>
+<div class="line"><span class="lineno">  138</span>    {</div>
+<div class="line"><span class="lineno">  139</span>        ret = gpio_pin_interrupt_configure(gpio0_dev, buttons_pins[i], GPIO_INT_EDGE_TO_ACTIVE );</div>
+<div class="line"><span class="lineno">  140</span>        <span class="keywordflow">if</span> (ret &lt; 0) </div>
+<div class="line"><span class="lineno">  141</span>        {</div>
+<div class="line"><span class="lineno">  142</span>            printk(<span class="stringliteral">&quot;Error: gpio_pin_interrupt_configure failed for button %d / pin %d, error:%d&quot;</span>, i+1, buttons_pins[i], ret);</div>
+<div class="line"><span class="lineno">  143</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  144</span>        }</div>
+<div class="line"><span class="lineno">  145</span>    }</div>
+<div class="line"><span class="lineno">  146</span> </div>
+<div class="line"><span class="lineno">  147</span>    <span class="comment">/* HW init done!*/</span></div>
+<div class="line"><span class="lineno">  148</span>    printk(<span class="stringliteral">&quot;All devices initialized sucesfully!\n\r&quot;</span>);</div>
+<div class="line"><span class="lineno">  149</span> </div>
+<div class="line"><span class="lineno">  150</span>    <span class="comment">/* Initialize the static struct gpio_callback variable   */</span></div>
+<div class="line"><span class="lineno">  151</span>    pinmask=0;</div>
+<div class="line"><span class="lineno">  152</span>    <span class="keywordflow">for</span>(i=0; i&lt;<span class="keyword">sizeof</span>(buttons_pins); i++) </div>
+<div class="line"><span class="lineno">  153</span>    {</div>
+<div class="line"><span class="lineno">  154</span>        pinmask |= BIT(buttons_pins[i]);</div>
+<div class="line"><span class="lineno">  155</span>    }</div>
+<div class="line"><span class="lineno">  156</span>    gpio_init_callback(&amp;button_cb_data, <a class="code hl_function" href="button_8c.html#ab4b2c1747e66383dfb0b5679887e1854">button_pressed</a>, pinmask);   </div>
+<div class="line"><span class="lineno">  157</span>    </div>
+<div class="line"><span class="lineno">  158</span>    <span class="comment">/* Add the callback function by calling gpio_add_callback()   */</span></div>
+<div class="line"><span class="lineno">  159</span>    gpio_add_callback(gpio0_dev, &amp;button_cb_data);</div>
+<div class="line"><span class="lineno">  160</span>}</div>
+<div class="ttc" id="abutton_8c_html_ab4b2c1747e66383dfb0b5679887e1854"><div class="ttname"><a href="button_8c.html#ab4b2c1747e66383dfb0b5679887e1854">button_pressed</a></div><div class="ttdeci">void button_pressed(const struct device *dev, struct gpio_callback *cb, uint32_t pins)</div><div class="ttdoc">Define a callback function. It is like an ISR (and runs in the cotext of an ISR) that is called when ...</div><div class="ttdef"><b>Definition:</b> <a href="button_8c_source.html#l00068">button.c:68</a></div></div>
+</div><!-- fragment --><div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
@@ -246,6 +338,39 @@ Notes:
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="button_8c_a89995812888279b6f90cac205b83ca61_icgraph.png" border="0" usemap="#abutton_8c_a89995812888279b6f90cac205b83ca61_icgraph" alt=""/></div>
 </div>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="ae5db5c9eda2f8f7a3b905743c4a412c4" name="ae5db5c9eda2f8f7a3b905743c4a412c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5db5c9eda2f8f7a3b905743c4a412c4">&#9670;&#160;</a></span>buttons_pins</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t buttons_pins[] = {11,12,24,25,3,4,28,29}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="button_8c_source.html#l00052">52</a> of file <a class="el" href="button_8c_source.html">button.c</a>.</p>
+
+</div>
+</div>
+<a id="a8fdae708b90715d11ef68ade4d479b01" name="a8fdae708b90715d11ef68ade4d479b01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fdae708b90715d11ef68ade4d479b01">&#9670;&#160;</a></span>button_state</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t button_state[8]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="button_8c_source.html#l00059">59</a> of file <a class="el" href="button_8c_source.html">button.c</a>.</p>
 
 </div>
 </div>

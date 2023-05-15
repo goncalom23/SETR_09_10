@@ -16,7 +16,7 @@ digraph "src/button/button.c"
   Node1 -> Node6 [color="steelblue1",style="solid"];
   Node6 [label="zephyr/sys/printk.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node1 -> Node7 [color="steelblue1",style="solid"];
-  Node7 [label="button.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$button_8h.html",tooltip="Apropriate returns defines for the crc8 and respective function prototypes."];
+  Node7 [label="button.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$button_8h.html",tooltip="Apropriate function prototypes, and some important definitions."];
   Node7 -> Node2 [color="steelblue1",style="solid"];
   Node7 -> Node3 [color="steelblue1",style="solid"];
   Node7 -> Node4 [color="steelblue1",style="solid"];

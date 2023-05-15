@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"zephyr_2subsys_2tracing_2cmake__install_8cmake_source.html":[2,0,0,4,10,16,0],
 "zephyr_2subsys_2usb_2cmake__install_8cmake_source.html":[2,0,0,4,10,17,0],
 "zephyr_8bin_source.html":[2,0,0,4,27],
 "zephyr_8dts_8pre_source.html":[2,0,0,4,29],

@@ -43,7 +43,7 @@ int credit = 0;                                             /*!< User available 
 int select_movie = 0;                                       /*!< Number of the movie to be selected by the user */
 uint32_t timer_counter = 0;                                 /*!< Counter to track time, used to minimize prints */
 char arrow [5][10];                                         /*!< String array to display an arrow showing the user which movie he is pointing to chose */
-int entrie_flag = 0;
+int entrie_flag = 0;                                        /*!< To ensure some states only realise some activities once */
 
 int change_arrow();
 int print_interface();
@@ -66,11 +66,10 @@ int main(void)
     {
         k_msleep(20);
         //timer_counter++;
-        //if(timer_counter >= 50 && state == BROWSING_MOVIES)
+        //if(timer_counter >= 50)
         //{
-        //    print_interface();
-		//	//print_button_state();
-        //    timer_counter = 0;
+		//  print_button_state();
+        //  timer_counter = 0;
         //}
         switch(state)
         {

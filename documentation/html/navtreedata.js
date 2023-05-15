@@ -41,7 +41,11 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"adc_8h_source.html"
+"_8cmake_8dotconfig_8checksum_source.html",
+"dir_76b6e58d4db17c27b38b1bf9bb34740d.html",
+"k__condvar__wait__mrsh_8c_source.html",
+"net__addr__pton__mrsh_8c_source.html",
+"zephyr_2subsys_2tracing_2cmake__install_8cmake_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

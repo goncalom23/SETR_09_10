@@ -16,5 +16,6 @@ var main_8c =
     [ "credit", "main_8c.html#a0313e05dea7c4e2f53ddee9bd8b300d0", null ],
     [ "select_movie", "main_8c.html#ae6f936516c25f9d32240857472a8b976", null ],
     [ "timer_counter", "main_8c.html#ab1e417e8be2fb1a2feac372b1b15ce90", null ],
-    [ "arrow", "main_8c.html#ad3fcce1c68ec8ade431c52ffa308571e", null ]
+    [ "arrow", "main_8c.html#ad3fcce1c68ec8ade431c52ffa308571e", null ],
+    [ "entrie_flag", "main_8c.html#a3a57bdad46840b9a04404c222a75ebcb", null ]
 ];

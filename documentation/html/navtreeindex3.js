@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"net__addr__pton__mrsh_8c_source.html":[2,0,0,4,5,0,0,289],
 "net__eth__get__ptp__clock__by__index__mrsh_8c_source.html":[2,0,0,4,5,0,0,290],
 "net__if_8h_source.html":[2,0,0,4,5,0,0,291],
 "net__if__get__by__index__mrsh_8c_source.html":[2,0,0,4,5,0,0,292],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "zephyr_2subsys_2stats_2cmake__install_8cmake_source.html":[2,0,0,4,10,12,0],
 "zephyr_2subsys_2storage_2cmake__install_8cmake_source.html":[2,0,0,4,10,13,0],
 "zephyr_2subsys_2task__wdt_2cmake__install_8cmake_source.html":[2,0,0,4,10,14,0],
-"zephyr_2subsys_2testsuite_2cmake__install_8cmake_source.html":[2,0,0,4,10,15,0],
-"zephyr_2subsys_2tracing_2cmake__install_8cmake_source.html":[2,0,0,4,10,16,0]
+"zephyr_2subsys_2testsuite_2cmake__install_8cmake_source.html":[2,0,0,4,10,15,0]
 };
