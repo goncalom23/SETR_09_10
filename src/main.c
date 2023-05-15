@@ -4,7 +4,7 @@
  * 
  * \date May 15, 2023, 10:32 AM
  * \brief
- * SETR 22/23, Assignment 3
+ * SETR 22/23, Assignment 3 - ticket vending machine for movies
 
  * Application that emulates an automated ticket vending machine for movies. 
  * The vending machine accepts a subset of coins and bills and
@@ -25,24 +25,24 @@
 #include "button/button.h"
 
 /* Defenitions for funciton returns */
-#define EXIT_SUCESSFUL 0                                    // Function worked as suposed     
-#define STATE_MACHINE_ERROR 1                               // State machine used a state not suposed to                                                            
+#define EXIT_SUCESSFUL 0                                    /*!< Function worked as suposed  */     
+#define STATE_MACHINE_ERROR 1                               /*!< State machine used a state not suposed to */                                                           
 
 /* State machine - state defenitions */
-#define BROWSING_MOVIES 1                                   // State machine state when user is browsing movies
-#define ADD_CREDIT 2                                        // State machine state when user is adding credit
-#define MOVIE_SELECTED 3                                    // State machine state when user is selecting a movie
-#define RETURN_CREDIT 4                                     // State machine state when user is returning credit
+#define BROWSING_MOVIES 1                                   /*!< State machine state when user is browsing movies */
+#define ADD_CREDIT 2                                        /*!< State machine state when user is adding credit */
+#define MOVIE_SELECTED 3                                    /*!< State machine state when user is selecting a movie */
+#define RETURN_CREDIT 4                                     /*!< State machine state when user is returning credit */
 
-char movie_name[5] = {'A','A','A','B','B'};                 // Array containing the names of the movies in the movie list by order
-uint8_t movie_price[5] = {9,11,9,10,12};                    // Array containing the prices of the movies in the movie list by order
-uint8_t movie_session[5] = {19,21,23,19,21};                // Array containing the sessions hours of the movies in the movie list by order
+char movie_name[5] = {'A','A','A','B','B'};                 /*!< Array containing the names of the movies in the movie list by order */
+uint8_t movie_price[5] = {9,11,9,10,12};                    /*!< Array containing the prices of the movies in the movie list by order */
+uint8_t movie_session[5] = {19,21,23,19,21};                /*!< Array containing the sessions hours of the movies in the movie list by order */
 
 extern uint8_t button_state[8];                             
-int credit = 0;                                             // User available credit
-int select_movie = 0;                                       // Number of the movie to be selected by the user
-uint32_t timer_counter = 0;                                 // Counter to track time, used to minimize prints
-char arrow [5][10];                                         // String array to display an arrow showing the user which movie he is pointing to chose
+int credit = 0;                                             /*!< User available credit */
+int select_movie = 0;                                       /*!< Number of the movie to be selected by the user */
+uint32_t timer_counter = 0;                                 /*!< Counter to track time, used to minimize prints */
+char arrow [5][10];                                         /*!< String array to display an arrow showing the user which movie he is pointing to chose */
 
 int change_arrow();
 int print_interface();
@@ -232,7 +232,8 @@ int print_interface()
  *  \return                                                     
  *  0: if success                 	 
  */ 
-int print_button_state(){
+int print_button_state()
+{
     printf("\033[2J\033[H");   
 	printf("\nButton 1: %i", button_state[0]);
 	printf("\nButton 2: %i", button_state[1]);

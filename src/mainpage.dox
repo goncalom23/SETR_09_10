@@ -1,0 +1,13 @@
+/*! \mainpage SETR_Lab09_10 Documentation
+ *
+ *  \authors Gonçalo Martins <goncalom23@ua.pt> and Filipe Silva <filipe.msilva@ua.pt>
+ *
+ * This project is an application that emulates an automated ticket vending machine for movies. 
+ * The vending machine accepts a subset of coins and bills and
+ * allows the user to browse a list to select the movie and session, eventually returning the remaining
+ * credit. The inputs are push-buttons and the output is done via UART/Terminal (which emulates a
+ * screen).
+ * 
+ * \bug No known bugs.
+ */ 
+

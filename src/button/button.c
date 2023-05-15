@@ -6,8 +6,7 @@
  * \date May 15, 2023, 10:41 AM
  * \brief
  * 
- * SETR 22/23, Paulo Pedreiras:
- * Simple Digital I/O, using additional/external buttons
+ * SETR 22/23: Simple Digital I/O, using additional/external buttons
  * 
  * It shows the use of generic gpio functions. In these cases the pin functionality set by 
  * 		the DT (if any) is not used.
