@@ -4,7 +4,7 @@
  * 
  * \date May 15, 2023, 10:41 AM
  * \brief
- * Apropriate returns defines for the crc8 and respective function prototypes
+ * Apropriate function prototypes, and some important definitions
  */
 
 #include <zephyr/kernel.h>              /*!< for k_msleep() */

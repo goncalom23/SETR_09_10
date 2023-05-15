@@ -43,6 +43,7 @@ int credit = 0;                                             /*!< User available 
 int select_movie = 0;                                       /*!< Number of the movie to be selected by the user */
 uint32_t timer_counter = 0;                                 /*!< Counter to track time, used to minimize prints */
 char arrow [5][10];                                         /*!< String array to display an arrow showing the user which movie he is pointing to chose */
+int entrie_flag = 0;
 
 int change_arrow();
 int print_interface();
@@ -58,18 +59,19 @@ int main(void)
 {   
     button_config();
     change_arrow();
+	print_interface();
 
     int state = BROWSING_MOVIES;        
     while (1)
     {
-        k_msleep(10);
-        timer_counter++;
-        if(timer_counter == 50 && state == BROWSING_MOVIES)
-        {
-            print_interface();
-			//print_button_state();
-            timer_counter = 0;
-        }
+        k_msleep(20);
+        //timer_counter++;
+        //if(timer_counter >= 50 && state == BROWSING_MOVIES)
+        //{
+        //    print_interface();
+		//	//print_button_state();
+        //    timer_counter = 0;
+        //}
         switch(state)
         {
             case BROWSING_MOVIES:
@@ -78,39 +80,42 @@ int main(void)
                 {
                     select_movie = select_movie - 1; 
                     change_arrow(); 
-                    button_state[4] = 0;                    
+                    button_state[4] = 0;
+					print_interface();                   
                 }
                 else if(button_state[5] == 1)           // Browse Down
                 {
                     select_movie = select_movie + 1;
                     change_arrow();     
-                    button_state[5] = 0;                    
+                    button_state[5] = 0;
+					print_interface();                    
                 }
                 else if(button_state[0] == 1 || button_state[1] == 1 || button_state[2] == 1 || button_state[3] == 1)   // add credit
                 {
                     state = ADD_CREDIT;
+					print_interface();
                 } 
                 else if(button_state[6] == 1)           // Select
                 {
                     state = MOVIE_SELECTED;
-                    button_state[6] = 0;                    
+                    button_state[6] = 0;                   
                 }
                 else if(button_state[7] == 1)           // Return credit
                 {
                     state = RETURN_CREDIT;
                 }
-                
                 if(select_movie < 0)                    // Rotacao entre o ultimo e primeiro filme
                 {
                     select_movie = 4;
                     change_arrow();
+					print_interface();
                 }
                 if(select_movie > 4)
                 {
                     select_movie = 0;
                     change_arrow();
+					print_interface();
                 }
-
                 break;
             }
             
@@ -142,46 +147,53 @@ int main(void)
             
             case MOVIE_SELECTED:
             {
-                printf("\033[2J\033[H");                // clear window code
-
-                printf("\n Ticket for movie %c, session %uH00 issued",movie_name[select_movie],movie_session[select_movie]);
-                if(movie_price[select_movie] > credit)
+                if(movie_price[select_movie] > credit && entrie_flag == 0)
                 {
-                    printf("\n Not enought credit. Ticket not issued");                
+                    printf("\033[2J\033[H");                // clear window code
+                    printf("\n Not enought credit. Ticket not issued");           
                 }
-                else if(movie_price[select_movie] < credit)
+                else if(movie_price[select_movie] <= credit && entrie_flag == 0)
                 {
                     credit = credit-movie_price[select_movie];
+                    printf("\033[2J\033[H");                // clear window code
+                    printf("\n Ticket for movie %c, session %uH00 issued",movie_name[select_movie],movie_session[select_movie]);
                     printf("\n Remaining credit %i",credit);                
                 }
                 //k_msleep(3000);
+                entrie_flag = 1;
                 if(button_state[4] == 1)                // Browse down button used to return to browsing movies
                 {
                     state = BROWSING_MOVIES;
+                    button_state[4] = 0;
+                    entrie_flag = 0;
+                    print_interface();
                 }
                 break;
             }
 
             case RETURN_CREDIT:
             {
-                if(button_state[7] == 1)                // Return credit
+                if(button_state[7] == 1 && entrie_flag == 0)                // Return credit
                 {
-                    credit = 0;   
                     printf("\033[2J\033[H");            // clear window code
                     printf("\n %i EUR return",credit);
+                    credit = 0;
                     button_state[7] = 0;      
                 }
-
                 //k_msleep(3000);
+                entrie_flag = 1;
                 if(button_state[4] == 1)                // Browse down button used to return to browsing movies
                 {
                     state = BROWSING_MOVIES;
+                    button_state[4] = 0;
+                    entrie_flag = 0;
+					print_interface();
                 }
                 break;
             }
-
             default:                                    
                 return STATE_MACHINE_ERROR;             // Error, the state machine should never get into this state
+                printf("\nError!");
             break;
         }
     }
