@@ -150,7 +150,7 @@ int main(void)
                 {
                     printf("\033[2J\033[H");                // clear window code
                     printf("\n Not enought credit. Ticket not issued");
-                    printf("\n Press ''UP' to exit");
+                    printf("\n Press 'UP' to exit");
                 }
                 else if(movie_price[select_movie] <= credit && entrie_flag == 0)
                 {
