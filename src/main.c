@@ -149,14 +149,16 @@ int main(void)
                 if(movie_price[select_movie] > credit && entrie_flag == 0)
                 {
                     printf("\033[2J\033[H");                // clear window code
-                    printf("\n Not enought credit. Ticket not issued");           
+                    printf("\n Not enought credit. Ticket not issued");
+                    printf("\n Press ''UP' to exit");
                 }
                 else if(movie_price[select_movie] <= credit && entrie_flag == 0)
                 {
                     credit = credit-movie_price[select_movie];
                     printf("\033[2J\033[H");                // clear window code
                     printf("\n Ticket for movie %c, session %uH00 issued",movie_name[select_movie],movie_session[select_movie]);
-                    printf("\n Remaining credit %i",credit);                
+                    printf("\n Remaining credit %i",credit);
+                    printf("\n Press 'UP' to exit");
                 }
                 //k_msleep(3000);
                 entrie_flag = 1;
@@ -176,6 +178,7 @@ int main(void)
                 {
                     printf("\033[2J\033[H");            // clear window code
                     printf("\n %i EUR return",credit);
+                    printf("\n Press 'UP' to exit");
                     credit = 0;
                     button_state[7] = 0;      
                 }
